@@ -11,8 +11,9 @@ services:
     - 127.0.0.1:50000:50000
     volumes:
     - jenkins_home:/var/jenkins_home
+    restart: unless-stopped
     labels:
       traefik.backend: ci-backend-jenkins
       traefik.frontend.rule: Host:${JENKINS_HOST}"
-      traefik.enable: true
+      traefik.enable: "true"
       traefik.port: 8080
