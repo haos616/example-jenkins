@@ -1,0 +1,11 @@
+version: "3.6"
+
+volumes:
+  jenkins_home: {}
+
+services:
+  plugins:
+    build: images/plugins
+    volumes:
+      - './images/plugins/files:/usr/local/docker'
+      - './images/jenkins/files:/usr/local/jenkins'

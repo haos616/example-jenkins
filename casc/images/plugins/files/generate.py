@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as etree
 
 
-with open('plugins.xml') as plugins_file:
+with open('/usr/local/jenkins/plugins.xml') as plugins_file:
     plugins_data = plugins_file.read()
 
 tree = etree.fromstring(plugins_data)

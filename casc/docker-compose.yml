@@ -1,0 +1,25 @@
+version: "3.6"
+
+volumes:
+  jenkins_home: {}
+
+services:
+  jenkins:
+    image: ${HUB_HOST}/ci/jenkins:${JENKINS_VERSION}
+    ports:
+    - 8080:8080
+    - 50000:50000
+    volumes:
+    - jenkins_home:/var/jenkins_home
+    environment:
+      CASC_JENKINS_CONFIG: /run/secrets/jcasc.yml
+    build:
+      context: images/jenkins
+      args:
+        JENKINS_VERSION: ${JENKINS_VERSION}
+    secrets:
+    - jcasc.yml
+
+secrets:
+  jcasc.yml:
+    file: ./secrets/casc.yml
